@@ -277,7 +277,9 @@ class @Chosen extends AbstractChosen
     this.result_clear_highlight() if evt.target.hasClassName('active-result') or evt.target.up('.active-result')
 
   choice_build: (item) ->
-    choice = new Element('li', { class: "search-choice" }).update("<span>#{item.html}</span>")
+    display_text = item.html
+    display_text = item.value if this.display_selected_value
+    choice = new Element('li', { class: "search-choice" }).update("<span>#{display_text}</span>")
 
     if item.disabled
       choice.addClassName 'search-choice-disabled'
